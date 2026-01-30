@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin Buddy Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>🗑️ Bin Buddy</h1>
+    <p>by Gloria Putuhena and Ezheciel Hitipew</p>
+    <p>Automatically scan organic, inorganic, and radioactive waste and earn rewards!</p>
+    <div id="userStatus" class="user-status" style="display:none;">
+        <span id="userDisplay"></span>
+        <button id="editProfileBtn" class="small-btn">Edit Profile</button>
+        <button id="switchUserBtn" class="small-btn">Switch User</button>
+    </div>
+</header>
+
+    <main>
+        <section id="registration" class="registration-section">
+            <h2>👤 User Registration</h2>
+            <p>Please register to save your progress and earn rewards!</p>
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="userName">Full Name:</label>
+                    <input type="text" id="userName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="userClass">Class:</label>
+                    <input type="text" id="userClass" placeholder="e.g., 10-A, 11 Science" required>
+                </div>
+                <button type="submit" id="registerBtn">Register & Start</button>
+            </form>
+        </section>
+
+        <section id="scanner" style="display:none;">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <button id="startScan">Start Scanning</button>
+            <button id="stopScan" disabled>Stop Scanning</button>
+            <div id="result"></div>
+            <div id="confidence" style="display:none;"></div>
+            <div id="wasteInfo" class="waste-info-panel" style="display:none;"></div>
+        </section>
+
+        <section id="categoryLegend">
+            <h3>Waste Category Guide</h3>
+            <div class="category-grid">
+                <div class="category-card organic">
+                    <h4>🌱 Organic</h4>
+                    <p>Food waste, yard trimmings, paper products</p>
+                    <p><strong>Points: 5</strong></p>
+                </div>
+                <div class="category-card inorganic">
+                    <h4>♻️ Inorganic</h4>
+                    <p>Plastic, glass, metal, electronics</p>
+                    <p><strong>Points: 10</strong></p>
+                </div>
+                <div class="category-card radioactive">
+                    <h4>☢️ Radioactive</h4>
+                    <p>Nuclear waste, contaminated materials</p>
+                    <p><strong>Points: 20</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="rewards">
+            <h2>Your Rewards</h2>
+            <p>Points: <span id="points">0</span></p>
+            <p>Badges: <span id="badges">0</span></p>
+            <h3>Leaderboard</h3>
+            <ul id="leaderboard"></ul>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
